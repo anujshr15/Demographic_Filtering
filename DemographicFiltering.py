@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 pd.set_option('display.max_columns',None)
 
 
@@ -28,3 +29,10 @@ q_movies['score']=q_movies.apply(movie_ratings,axis=1)
 q_movies=q_movies.sort_values('score',ascending=False)
 print(q_movies[['title_x','vote_count','vote_average','score']].head(10))
 
+pop=df.sort_values('popularity',ascending=False)
+plt.figure(figsize=(12,4))
+plt.barh(pop['title_x'].head(6),pop['popularity'].head(6),align='center',color='skyblue')
+plt.gca().invert_yaxis()
+plt.xlabel('Popularity')
+plt.title('Popular Movies')
+plt.show()
